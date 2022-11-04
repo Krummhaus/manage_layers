@@ -67,7 +67,7 @@ create table "s_309_HranicePodzemnihoObjektuZPS" (
 	geom geometry(linestringz, 5514)
 );
 
-create table from step5_zps_bdef_objekty_dtmcr (
+create table step5_zps_bdef_objekty_dtmcr (
 	obec varchar(90),
 	orp int2
 );
@@ -165,5 +165,3 @@ values
 (353,'562815_Dunajovice'),
 (353,'562831_Hrachoviště'),
 (353,'562840_Domanín');
-
-
