@@ -1,0 +1,32 @@
+version: '3'
+
+service:
+  postgis:
+    container_name: qplug-postgis
+    image: kartoza/postgis:13.0
+    ports:
+      - "5432:5432" # host:contaner
+    volumes:
+      - postgis-data:/var/lib/postgresql
+      - ${pwd}/.sql:/docker-entrypoint-initdb.d
+    environment:
+        - POSTGRES_DB=gis
+        - POSTGRES_USER=docker
+        - POSTGRES_PASS=docker
+        - ALLOW_IP_RANGE=0.0.0.0/0
+    restart: on-failure
+
+  pgadmin:
+    container_name: qplug-pgadmin
+    image: dpage/pgadmin4
+    ports:
+      - "8080:8080" # host:contaner
+    environment:
+      - PGADMIN_DEFAULT_EMAIL: pgadmin@pgadmin.org
+      - PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+       - pgadmin:/var/lib/pgadmin
+
+volumes:
+  postgis-data:
+  pgadmin:
