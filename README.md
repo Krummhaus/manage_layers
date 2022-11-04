@@ -57,7 +57,39 @@ Předpokladem je nainstalovaný docker a GIT na localhostu.
 - Qgis hledá pluginy ve složce
     - Windows: `C:\Users\USER\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins`
     - Linux: `~/.local/share/QGIS/QGIS3/profiles/default/python/plugins`
-- Nastavit symbolic link `mklink /D C:\LinkToFolder C:\Users\Name\OriginalFolder`
+- Nastavit symbolic link ze složky kde je Git repo projektu do složky kde Qgis hledá pluginy. 
+ `mklink /D C:\FolderWhereQgisIsLookingForPlugins C:\WhereTheGitRepoOfProjectIs`
 ### Spuštění databáze Postgis 
 - V terminálu s projektem navigovat so složky `.docker/` spustit Postgis a PgAdmin kontajnery příkazem `docker-compose up -d`. Kontajner s PostGIS databází by si měl sám připravit tabulky. Lze kontrolovat přes PgAdmina na `localhost:8080`, příhlášení přes login=pgadmin@pgadmin.org, heslo=admin.
+### Spuštění Qgis Desktop
+- Double click na projekt ve složce `.qgz\project.qgz` by se měl spustit Qgis s načteným projektem a s vrstvami:  
+![Qgis](.img/qgis.png)
+- Zobrazení pluginu  
+![Enable Plugins](.img/plug.png)
+- Povolit experimentální pluginy  
+![Enable Plugins](.img/exper.png)
+- Vyhledat a nainstalovat tyto pluginy:
+    - DTM-ČR Defaults Set Up <<náš plugin>>
+    ![Enable Plugins](.img/pluginst.png)
+    - Plugin Builder  
+    ![Enable Plugins](.img/buil.png)
+    - Plugin Reloader  
+    ![Enable Plugins](.img/relo.png)
+- Zobrazení pluginů na liště v qgisu přes pravé tlačítko
+    ![Enable Plugins](.img/rclick.png)
+    ![Enable Plugins](.img/rclick2.png)
+    ![Enable Plugins](.img/rclick3.png)
+- Tlačítka pluginů na liště
+    ![Enable Plugins](.img/panel.png)
+
+### Spuštění Python konzole v QGIS nebo IDE VS Code
+- Python conosle a editor v Qgis  
+    - Konzole  
+    ![PyConsole](.img/pycon.png)  
+    - Editor `->1..zpanout editor ->2..načíst *.py soubor` 
+    ![PyEditor](.img/pyscr.png)  
+- IDE VS Code aware of qgis python interpreter
+    - upravit soubor `vscode-qgis-ide.bat` a přes něj spustit VS Code.
+
+
 
